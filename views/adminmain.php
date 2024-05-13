@@ -10,17 +10,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90680653-2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  
+ 
 
-      gtag('config', 'UA-90680653-2');
-    </script>
-   <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
-    <meta name="author" content="BootstrapDash">
-
-    <title>Azia Responsive Bootstrap 4 Dashboard Template</title>
+    <title>Dashboard</title>
 
     <link href="../lib/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
