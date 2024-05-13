@@ -5,7 +5,7 @@ class Session extends Center
 {
     public $db;
     public $conn;
-    public $date, $time, $status, $price, $teacherId, $centerId, $studentId;
+    public $date, $time, $status, $price, $teacherId, $centerId;
 	
 
     public function __construct()
