@@ -11,6 +11,7 @@ include_once '..\includes\db.php';
 
  if (!empty($_SESSION['ID'])) {
      $UserObject = new user($_SESSION["ID"]);
+
  }
  ?>
 
@@ -48,7 +49,10 @@ include_once '..\includes\db.php';
     .header-links li.active span::before {
       background-color: #fcae04;
     }
-  
+  .active{
+    background-color: #fcae04;
+
+  }
     .header-links li:not(.active):hover span::before {
       background-color: #ccc;
     }
@@ -63,35 +67,37 @@ include_once '..\includes\db.php';
   
 <body>
     
+
  
       <header class="bg-white shadow-lg h-24 hidden md:flex">
         <a href="" class="border flex-shrink-0 flex items-center justify-center px-4 lg:px-6 xl:px-8">
             <span class="logo">Manaseti</span>
         </a>
-        <nav class="header-links contents font-semibold text-base lg:text-lg">
-          <ul class="flex items-center ml-4 xl:ml-8 mr-auto">
-            <li class="p-3 xl:p-6 active">
-              <a href="">
-                <span>Home</span>
-              </a>
-            </li>
-            <li class="p-3 xl:p-6">
-              <a href="">
-                <span>Services</span>
-              </a>
-            </li>
-           
-          </ul>
+        <nav class=" contents font-semibold text-base lg:text-lg">
+         <ul class="flex items-center ml-4 xl:ml-8 mr-auto">
+    <?php
+    for ($i = 0; $i < count($UserObject->usertype->pages); $i++) {
+        echo '
+        <li class="p-3 xl:p-6">
+            <a class="' . $UserObject->usertype->pages[$i]->class . '" href="' . $UserObject->usertype->pages[$i]->linkaddress . '">
+                <span class="icon">' . $UserObject->usertype->pages[$i]->icons . '</span>
+                <span>' . $UserObject->usertype->pages[$i]->name . '</span>
+            </a>
+        </li>
+        ';
+    }
+    ?>
+</ul>
+
         </nav>
       <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse justify-start "> 
     <button type="button" style="margin-right: 50px;" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-        <img class="w-14 h-14 rounded-full" src="/docs/images/people/profile-picture-3.jpg" >
+    <img src="../public/images/profile.jpg"width="50" height="50"  >
     </button>
     <!-- Dropdown menu -->
     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
         <div class="px-4 py-3">
-            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?php  echo $_SESSION["email"] ?></span>
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
             <li>

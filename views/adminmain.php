@@ -54,8 +54,8 @@ include_once '..\includes\navbar.php';
         <div class="az-content-body">
           <div class="az-dashboard-one-title">
             <div>
-              <h2 class="az-dashboard-title">Hi, welcome back!</h2>
-              <p class="az-dashboard-text">Your web analytics dashboard template.</p>
+              <h2 class="az-dashboard-title">Hi, welcome back! <?php  echo $_SESSION["email"] ?></h2>
+              <p class="az-dashboard-text">Your Admin dashboard .</p>
             </div>
             <div class="az-content-header-right">
               <div class="media">
@@ -165,7 +165,7 @@ include_once '..\includes\navbar.php';
                 </div><!-- card-header -->
                 <div class="card-body">
                    
-                   <span>Date</span>
+                   <span>Date:  <?php echo date("F j, Y"); ?></span>
                  
                    
                  
