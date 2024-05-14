@@ -130,6 +130,39 @@ public function displayErrors($err){
     }
 }
 
+public function viewSessions($ID){
+    // Query the sessions table and join it with the center table to get the center's name
+    $sql = "SELECT sessions.*, center.cname FROM sessions
+            JOIN center ON center.Cid = sessions.Cid
+            WHERE sessions.Cid = " . intval($ID);
+    $result = mysqli_query($this->conn, $sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row['sessid'] . "</td>";
+            echo "<td>" . $row['date'] . "</td>";
+            echo "<td>" . $row['time'] . "</td>";
+            echo "<td>" . $row['status'] . "</td>";
+            echo "<td><a href='./editSession.php?sessid=" . $row['sessid'] . "'>Edit</a> | <a href='./deleteSession.php?sessid=" . $row['sessid'] . "'>Delete</a>|<a href='./viewenrollment.php?sessid=" . $row['sessid'] . "'>View Enrolled</a></td>";
+            echo "<td>" . $row['cname'] . "</td>";
+            echo "</tr>";
+        }
+    } else {
+        echo "<h1>No sessions found</h1>";
+    }
+
+  
+
+
+$sql2="select cname from center where Cid = {$ID}";
+$res2=mysqli_query($this->conn,$sql2);
+if ($res2) {
+    $row = mysqli_fetch_assoc($res2);
+    $_SESSION['sessionView'] = $row['cname'];
+}
+}
+
 
 
 

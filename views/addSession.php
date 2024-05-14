@@ -1,6 +1,6 @@
 <?php
-include_once '..\includes\navigation.php';
-require_once '../app\controller\SessionController.php';
+include_once '..\includes\navbar.php';
+require_once '../app/controller/SessionController.php';
 $db = Database::getInstance();
 $conn = $db->getConnection();	
 $sessioncntrl =new SessionController();
