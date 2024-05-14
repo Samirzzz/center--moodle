@@ -1,3 +1,44 @@
+<?php
+include_once '..\includes\navigation.php';
+require_once '../app\controller\SessionController.php';
+$db = Database::getInstance();
+$conn = $db->getConnection();	
+$sessioncntrl =new SessionController();
+
+$errors = array();
+$center_id = $sessioncntrl->getCenterID($_SESSION["ID"]);
+echo( "center id is ---------- ".$center_id);
+$teachers = $sessioncntrl->getCenterTeachers($center_id);
+
+
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
+    $s_date = htmlspecialchars($_POST['date']);
+    $s_time = htmlspecialchars($_POST['time']);
+    $s_status = htmlspecialchars($_POST['status']);
+    $s_price = htmlspecialchars($_POST['price']);
+    $s_tid =htmlspecialchars($_POST['teacherid']);
+    $s_cid = $sessioncntrl->getCenterID($_SESSION["ID"]);
+    
+    $errors = $sessioncntrl->validateSession($s_date, $s_time, $s_status,$s_price, $s_tid, $s_cid);
+
+    if (count($errors) === 0) {
+      
+        if ($sessioncntrl->addSession($s_date, $s_time, $s_status,$s_price, $s_tid, $s_cid, $s_sid)) {
+            echo "Form submitted successfully!";
+            header("location: ./viewSessions.php");
+            
+            
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+        
+   
+}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,13 +65,17 @@
     <br>
     <label for="di">teacher</label>
      <select id="ti" name="teacherid">
-    
+        <?php foreach ($teachers as $doctor) { ?>
+            <option value="<?php echo $doctor['tid']; ?>">
+                <?php echo $doctor['firstname'] . ' ' . $doctor['lastname']; ?>
+            </option>
+        <?php } ?>
     </select>
     <br>
     <br>
     <br>
     <label for="ci">center's id</label>
-
+    <input type="text" placeholder="Enter center's id" id="ci" name="centerid" value = "<?php echo $center_id ."           ". "( ".$sessioncntrl->getCenterName()." )"  ;?>">
     <br>
     <label for="s">Status</label>
 <select id="s" name="status">
@@ -45,7 +90,7 @@
   
     <input type="submit" id="submit" name="submit" value="submit">
     <span class = "error">
-
+    <?php $sessioncntrl->displayErrors($errors) ?>
 </span>
    </form>
 
