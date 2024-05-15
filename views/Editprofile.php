@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $_SESSION['cname']=$cname;
                 $_SESSION['cnumber']=$cnumber;
                 $_SESSION['cloc']=$cloc;
-                header("Location:../views/admin.php");
+                // header("Location:../views/admin.php");
                 
 
             }
