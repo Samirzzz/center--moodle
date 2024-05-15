@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../public/images/back2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#cont {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+#frm {
+    text-align: center;
+}
+
+#wel {
+    color: #b11226; /* Red wine color */
+    margin-bottom: 20px;
+}
+
+#fields {
+    position: relative;
+}
+
+.iicon,
+.icon {
+    position: absolute;
+    margin: 12px;
+    color: #b11226; /* Red wine color */
+
+}
+
+.login-field {
+    width: calc(100% - 30px);
+    padding: 10px 10px 10px 30px;
+    margin: 10px 0;
+    border: 1px solid #b11226; /* Red wine color */
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.login-field:focus {
+    border-color: #800000; /* Darker red wine color */
+}
+
+#sb {
+    background-color: #b11226; /* Red wine color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#sb:hover {
+    background-color: #800000; /* Darker red wine color */
+}
+
+#sgu a {
+    color: #b11226; /* Red wine color */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#sgu a:hover {
+    color: #800000; /* Darker red wine color */
+}
+
+#login-error {
+    text-align: left;
+    color: red;
+    margin: 10px 0;
+}
+
+.link {
+    display: block;
+    margin-top: 10px;
+}
+
+#user-err, #pass-err {
+    color: red;
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+

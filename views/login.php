@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../public/css/interface.css">
+    <link rel="stylesheet" href="../public/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -132,9 +132,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                         <input type="submit" name="submit" id="sb" class="login-field">
                     </div>
                     <div id="sgu">
-                        <a class="link" href="signup.php">Sign Up</a> 
                        
-                        <p> Not a member yet ? </p>
+                      <p> Not a member yet ? </p>  <a class="link" href="signup.php">Sign Up</a> 
+                        
                         
                     </div>
                     
