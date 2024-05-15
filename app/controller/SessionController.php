@@ -115,7 +115,7 @@ public function addSession($date, $time, $status, $price, $teacherId, $centerId,
         $this->session->$teacherId=$teacherId;
         $this->session->$centerId=$centerId;
         $this->session->$studentId=$studentId;
-        header("location: ./viewSessions.php");
+        // echo '<script>window.location.href = "./viewSessions.php";</script>';
 
         
         return true;
@@ -171,6 +171,49 @@ public function DeleteEnrollment($sessionId)
     $sql="DELETE FROM enrollment WHERE sessid=$sessionId";
     $res=mysqli_query($this->conn,$sql);
     if ($res) {
+        
+        return true;
+    } else {
+        return false;
+    }
+}
+
+public function validateSessionUpdate($date, $time, $price)
+{
+    $errors = array();
+
+    if (empty($date)) {
+        $errors[] = "Date is required";
+    }
+
+    if (empty($time)) {
+        $errors[] = "Time is required";
+    }
+
+
+    if (empty($price)) {
+        $errors[] = "Price is required";
+    }
+
+    $currentDate = date("Y-m-d");
+    $maxAllowedDate = date("Y-m-d", strtotime("+45 days")); // 1.5 months ahead
+
+    if ($date < $currentDate || $date > $maxAllowedDate) {
+        $errors[] = "Date must be between today and 1.5 months ahead.";
+    }
+
+    return $errors;
+}
+public function updateSession($sessionId,$s_date, $s_time, $s_price){
+    $sql = "UPDATE sessions SET date = '$s_date', time = '$s_time',  price ='$s_price' WHERE sessid = $sessionId";
+    $res = mysqli_query($this->conn, $sql);
+
+    if ($res) {
+
+        $this->session->date=$s_date;
+        $this->session->time=$s_time;
+       
+        $this->session->price=$s_price;
         
         return true;
     } else {

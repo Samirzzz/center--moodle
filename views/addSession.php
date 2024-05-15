@@ -21,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
     $s_tid =htmlspecialchars($_POST['teacherid']);
     $s_cid = $sessioncntrl->getCenterID($_SESSION["ID"]);
     
-    $errors = $sessioncntrl->validateSession($s_date, $s_time, $s_status,$s_price, $s_tid, $s_cid);
+    $errors = $sessioncntrl->validateSession($s_date, $s_time, $s_status,$s_price, $s_tid , $s_cid);
 
     if (count($errors) === 0) {
       
-        if ($sessioncntrl->addSession($s_date, $s_time, $s_status,$s_price, $s_tid, $s_cid, $s_sid)) {
+        if ($sessioncntrl->addSession($s_date, $s_time, $s_status,$s_price, $s_tid, $s_cid, NULL)) {
             echo "Form submitted successfully!";
             header("location: ./viewSessions.php");
             
