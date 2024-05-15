@@ -92,21 +92,33 @@ include_once '..\includes\navbar.php';
                 <div class="card-body">
                   <div class="card-body-top">
                     <div>
-                      <label class="mg-b-0">Users</label>
-                      <h2>13,956</h2>
+                      <label class="mg-b-0">Centers</label>
+                      <h2><?php $sql = "SELECT * from center";
+                    if ($result = mysqli_query($conn, $sql)) {
+
+                        $rowcount = mysqli_num_rows( $result );
+                    }
+                    echo "$rowcount";    ?> </i></h2>
                     </div>
                     <div>
-                      <label class="mg-b-0">Bounce Rate</label>
-                      <h2>33.50%</h2>
+                      <label class="mg-b-0">Teachers</label>
+                      <h2><?php $sql = "SELECT * from teacher";
+                    if ($result = mysqli_query($conn, $sql)) {
+
+                        $rowcount = mysqli_num_rows( $result );
+                    }
+                    echo "$rowcount";    ?> </i></h2>
                     </div>
                     <div>
-                      <label class="mg-b-0">Page Views</label>
-                      <h2>83,123</h2>
+                      <label class="mg-b-0">Students</label>
+                      <h2><?php $sql = "SELECT * from student";
+                    if ($result = mysqli_query($conn, $sql)) {
+
+                        $rowcount = mysqli_num_rows( $result );
+                    }
+                    echo "$rowcount";    ?> </i></h2>
                     </div>
-                    <div>
-                      <label class="mg-b-0">Sessions</label>
-                      <h2>16,869</h2>
-                    </div>
+                   
                   </div><!-- card-body-top -->
                   <div class="flot-chart-wrapper">
                     <div id="flotChart" class="flot-chart"></div>
@@ -132,7 +144,28 @@ include_once '..\includes\navbar.php';
                 <div class="col-sm-6 mg-t-20 mg-sm-t-0">
                   <div class="card card-dashboard-two">
                     <div class="card-header">
-                      <h6>86k <i class="icon ion-md-trending-down tx-danger"></i> <small>0.86%</small></h6>
+                      <h6>  
+                         <?php
+
+    $sql_student = "SELECT COUNT(*) AS student_count FROM student;";
+    $result_student = mysqli_query($conn, $sql_student);
+    $row_student = mysqli_fetch_assoc($result_student);
+    $student_count = $row_student['student_count'];
+
+    $sql_teacher = "SELECT COUNT(*) AS teacher_count FROM teacher;";
+    $result_teacher = mysqli_query($conn, $sql_teacher);
+    $row_teacher = mysqli_fetch_assoc($result_teacher);
+    $teacher_count = $row_teacher['teacher_count'];
+
+    $sql_center = "SELECT COUNT(*) AS center_count FROM center;";
+    $result_center = mysqli_query($conn, $sql_center);
+    $row_center = mysqli_fetch_assoc($result_center);
+    $center_count = $row_center['center_count'];
+
+    $total_users = $student_count + $teacher_count + $center_count;
+
+    
+                    echo "$total_users";    ?> </i> <i class="icon ion-md-trending-down tx-danger"></i> </h6>
                       <p>Total Users</p>
                     </div><!-- card-header -->
                     <div class="card-body">
@@ -146,7 +179,12 @@ include_once '..\includes\navbar.php';
                   <div class="card card-dashboard-three">
                     <div class="card-header">
                       <p>All Sessions</p>
-                      <h6>16,869 <small class="tx-success"><i class="icon ion-md-arrow-up"></i> 2.87%</small></h6>
+                      <h6><?php $sql = "SELECT * from sessions";
+                    if ($result = mysqli_query($conn, $sql)) {
+
+                        $rowcount = mysqli_num_rows( $result );
+                    }
+                    echo "$rowcount";    ?> </i> <small class="tx-success"><i class="icon ion-md-arrow-up"></small></h6>
                       <small>The total number of sessions within the date range. It is the period time a user is actively engaged with your website, page or app, etc.</small>
                     </div><!-- card-header -->
                     <div class="card-body">
