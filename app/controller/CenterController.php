@@ -26,7 +26,32 @@ class CenterController
     
     }
 
-    
+    static function editCenter($cname,$cloc,$cnumber,$uid,$conn)
+    {
+        $sql = "UPDATE center Set cname='$cname', cloc='$cloc', cnumber='$cnumber' WHERE uid='$uid'";
+	    $result = mysqli_query($conn, $sql);
+        if($result)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+    public static function deleteCenter($id,$conn)
+    {
+        $sql = "DELETE FROM center WHERE uid=$id";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            return true;
+        } else {
+            echo "Error deleting from 'center': " . mysqli_error($conn);
+
+            return false;
+        }
+    }
     
     
 }
