@@ -224,8 +224,8 @@ include_once '..\includes\navbar.php';
                   <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
                     <div class="az-traffic-detail-item">
                       <div>
-                        <span>Organic Search</span>
-                        <span>1,320 <span>(25%)</span></span>
+                        <!-- <span>Organic Search</span>
+                        <span>1,320 <span>(25%)</span></span> -->
                       </div>
                       <div class="progress">
                         <div class="progress-bar bg-purple wd-25p" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -233,8 +233,8 @@ include_once '..\includes\navbar.php';
                     </div>
                     <div class="az-traffic-detail-item">
                       <div>
-                        <span>Email</span>
-                        <span>987 <span>(20%)</span></span>
+                        <!-- <span>Email</span>
+                        <span>987 <span>(20%)</span></span> -->
                       </div>
                       <div class="progress">
                         <div class="progress-bar bg-primary wd-20p" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
@@ -242,8 +242,8 @@ include_once '..\includes\navbar.php';
                     </div>
                     <div class="az-traffic-detail-item">
                       <div>
-                        <span>Referral</span>
-                        <span>2,010 <span>(30%)</span></span>
+                        <!-- <span>Referral</span>
+                        <span>2,010 <span>(30%)</span></span> -->
                       </div>
                       <div class="progress">
                         <div class="progress-bar bg-info wd-30p" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
@@ -251,8 +251,8 @@ include_once '..\includes\navbar.php';
                     </div>
                     <div class="az-traffic-detail-item">
                       <div>
-                        <span>Social</span>
-                        <span>654 <span>(15%)</span></span>
+                        <!-- <span>Social</span>
+                        <span>654 <span>(15%)</span></span> -->
                       </div>
                       <div class="progress">
                         <div class="progress-bar bg-teal wd-15p" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
@@ -260,14 +260,14 @@ include_once '..\includes\navbar.php';
                     </div>
                     <div class="az-traffic-detail-item">
                       <div>
-                        <span>Other</span>
-                        <span>400 <span>(10%)</span></span>
+                        <!-- <span>Other</span>
+                        <span>400 <span>(10%)</span></span> -->
                       </div>
                       <div class="progress">
                         <div class="progress-bar bg-gray-500 wd-10p" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                       </div><!-- progress -->
                     </div>
-                  </div><!-- col -->
+                  </div>col
                 </div><!-- card-body -->
               </div><!-- card-dashboard-four -->
             </div><!-- col -->

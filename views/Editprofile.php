@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $_SESSION['lastname']=$Lname;
                 $_SESSION['educ']=$Education;
                 $_SESSION['subject']=$Subject;
-                header("Location:../views/admin.php");
+                // header("Location:../views/admin.php");
 
             }
         }
@@ -203,9 +203,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
 
                 <div class="form-group">
-                        <label for="specialization">Specialization</label>
-                        <input type="text" class="form-control" id="specialization" name="specialization" value="' . $_SESSION["specialization"] . '">
-                        <div class="error-message" id="specialization-error"></div>
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" name="subject" value="' . $_SESSION["subject"] . '">
+                        <div class="error-message" id="subject-error"></div>
                     </div>
                     <div class="form-group">
                         <label for="education">Education</label>

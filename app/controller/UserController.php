@@ -107,6 +107,30 @@ class UserController {
             return false;
         }
     }
+
+    public static function editUser($email, $id,$conn)
+    {
+        $sql = "UPDATE user_acc SET email='$email' WHERE uid=$id";
+        $result = mysqli_query($conn, $sql);
+    
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public static function deleteUser($id,$conn)
+    {
+        $sql = "DELETE FROM user_acc WHERE uid=$id";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            return true;
+        } else {
+            echo "Error deleting from 'student': " . mysqli_error($conn);
+
+            return false;
+        }
+    }
    
     
 }
