@@ -220,6 +220,16 @@ public function updateSession($sessionId,$s_date, $s_time, $s_price){
         return false;
     }
 }
+public function deleteSession($sessionId){
+    $sql = "DELETE FROM sessions WHERE sessid = $sessionId";
+    $res = mysqli_query($this->conn, $sql);
+    if ($res) {
+        
+        return true;
+    } else {
+        return false;
+    }
+}
 
 
 
