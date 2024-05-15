@@ -57,11 +57,9 @@ include_once '..\includes\db.php';
       background-color: #ccc;
     }
     .logo {
-    /* Add your logo styles here */
-    font-size: 24px; /* Example font size */
-    font-weight: bold; /* Example font weight */
-    color: #333; /* Example color */
-    /* Add any other styling you want for your logo */
+    font-size: 24px;
+    font-weight: bold; 
+    color: #333; 
 }
   </style>
   
@@ -94,7 +92,6 @@ include_once '..\includes\db.php';
     <button type="button" style="margin-right: 50px;" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
     <img src="../public/images/profile.jpg"width="50" height="50"  >
     </button>
-    <!-- Dropdown menu -->
     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
         <div class="px-4 py-3">
             <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?php  echo $_SESSION["email"] ?></span>

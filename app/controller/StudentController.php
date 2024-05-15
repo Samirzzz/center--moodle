@@ -20,6 +20,31 @@ if(mysqli_query($conn,$sql))
 		return false;
 }
 
+static function editStudent($firstname, $lastname, $number,$gender,$address,$uid,$conn)
+{
+	$sql = "UPDATE student Set firstname='$firstname', lastname='$lastname', number='$number', gender='$gender', address='$address' WHERE uid='$uid'";
+	$result = mysqli_query($conn, $sql);
+        if($result)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+}
+public static function deleteStudent($id,$conn)
+{
+	$sql = "DELETE FROM student WHERE uid=$id";
+	$result = mysqli_query($conn, $sql);
+	if ($result) {
+		return true;
+	} else {
+		echo "Error deleting from 'student': " . mysqli_error($conn);
+		return false;
+	}
+}
 
 
 }

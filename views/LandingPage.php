@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Poppins:wght@300;600&family=Righteous&family=Rubik:ital@1&display=swap" rel="stylesheet">
-    <title>Tabeeby</title>
+    <title>Manaseti</title>
     <style>
         table {
             animation: transitionIn-Y-bottom 0.5s;
