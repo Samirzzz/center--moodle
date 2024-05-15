@@ -209,9 +209,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                             <label class="form-check-label" for="acceptTerms">I accept all terms & conditions</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="submit">Register Now</button>
+                    <button type="submit" class="btn btn-primary" name="submit" style="background-color: #b11226;">Register Now</button>
 
-                    <p class="mt-3">Already have an account? <a href="login.php">Login now</a></p>
+                    <p class="mt-3">Already have an account? <a href="login.php" style="color: #b11226;">Login now</a></p>
                 </form>
             </div>
         </div>
