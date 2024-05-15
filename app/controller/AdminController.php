@@ -12,4 +12,18 @@ class AdminController{
         $this->conn = $this->db->getConnection();
     }
 
+    function addpage($name,$la,$icon,$class){
+        $sql_pages = "INSERT INTO pages (name, linkaddress, icons,class) VALUES ('$name', '$la', '$icon','$class')";
+        $res = mysqli_query($this->conn, $sql_pages);
+        if ($res) {
+            header("Location: addpage.php");
+        } else {
+            echo "Error inserting data into the pages table: ";
+        
+         }
+    }
+    
+    
+
+
 }
