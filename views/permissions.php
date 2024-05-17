@@ -22,6 +22,8 @@ if(isset($_POST['submit'])){
 <html>
 <head>
 	<title></title>
+    <link rel="stylesheet" href="..\public\css/permission.css">
+
 	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){			
@@ -37,65 +39,7 @@ if(isset($_POST['submit'])){
 	</script>
 </head>
 <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-	
-tbody tr:hover{
-	background-color: white;
-	color: black;
-}
-
-        form {
-            max-width: 600px;
-            margin:  auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-            width: 100%;
-			background-color: initial;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        select, input[type="button"], input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        input[type="button"], input[type="submit"] {
-            cursor: pointer;
-            background-color:  #fcae04;
-            color: #fff;
-        }
-
-        input[type="button"]:hover, input[type="submit"]:hover {
-            background-color:  gainsboro;
-        }
+    
     </style>
 <body>
 	<form style="margin-top: 50px; margin-left:20px;" action="" method="post">
