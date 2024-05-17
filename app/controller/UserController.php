@@ -52,7 +52,7 @@ class UserController {
    
                if ($teacherRow = mysqli_fetch_array($teacherInfoResult)) {
                    $teacher = new Teacher($row['uid']);
-                   $teacher->tid = $teacherRow['tid'];
+                   $teacher->teacherId = $teacherRow['tid'];
                    $teacher->firstname = $teacherRow['firstname'];
                    $teacher->lastname = $teacherRow['lastname'];
                    $teacher->number = $teacherRow['number'];
