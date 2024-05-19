@@ -323,7 +323,49 @@ public function getSubjectSessions($subject){
    }
 
    
+   public function getEnrolled($sessionId)
+   {
+    
+       $sessionId = mysqli_real_escape_string($this->conn, $sessionId);
+       
+       $sql = "SELECT student.firstname, student.number,student.lastname
+               FROM student
+               JOIN enrollment ON student.sid = enrollment.sid
+               WHERE enrollment.sessid = '$sessionId'";
+               
+       $result = mysqli_query($this->conn, $sql);
+   
+       if ($result) {
+           if (mysqli_num_rows($result) > 0) {
+               while ($row = mysqli_fetch_assoc($result)) {
+                   echo "<tr>";
+                   echo "<td>" . $row['firstname'] . "</td>";
+                   echo "<td>" . $row['lastname'] . "</td>";
+                   echo "<td>" . $row['number'] . "</td>";
+                   echo "<td><a href='./DeleteEnrollment.php?sessid=" . $sessionId . "'>delete</a></td>";
+                   echo "</tr>";
+               }
+           } else
+            {
+               echo "<h1>No students found</h1>";
+           }
+       } else {
+           // Handle query error
+           echo "Error: " . mysqli_error($this->conn);
+       }
+   }
+   
+   public function cancelEnrollment($enrollment_id) {
+    $delete_sql = "DELETE FROM enrollment WHERE id = $enrollment_id";
+    $delete_result = mysqli_query($this->conn, $delete_sql);
 
+    if (!$delete_result) {
+        echo "Error: " . mysqli_error($this->conn);
+        return;
+    } else {
+        echo "Enrollment canceled successfully.";
+    }
+}
 
 
 }
