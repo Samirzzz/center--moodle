@@ -423,10 +423,10 @@ public function retreiveteacher()
      }
  } else 
  {
-     echo "<h1>" ."No doctors found"."</h1" ;
+     echo "<h1>" ."No Teachers found"."</h1" ;
  }
 }
-public function assignDoc($cid,$did){
+public function assignTeacher($cid,$did){
     $sql = "UPDATE teacher SET cid = '$cid' WHERE tid ='$did'";
     $res = mysqli_query($this->conn, $sql);
     if ($res) {

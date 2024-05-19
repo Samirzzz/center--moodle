@@ -42,9 +42,9 @@ $doctorInfoResult = mysqli_query($conn, $sql);
               
            <div class="box">
           <img src="../public/images/default.jpg" alt="image" class="drimg">
-           <h1 class="doctitle"> DR '  .$firstname .$lastname. '</h1>
-           <p class="info ">this is the doctor number : '
-           .$Number.'  and eductaion : </p>
+           <h1 class="doctitle"> Teacher '  .$firstname .$lastname. '</h1>
+           <p class="info ">this is the Teacher number : '
+           .$Number.'  </p>
           </div> 
          ' 
            
