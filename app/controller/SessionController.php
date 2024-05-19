@@ -88,9 +88,9 @@ public function getCenterName()
     return $_SESSION["cname"];
 }
 
-public function getCenterTeachers($cid)
+public function getCenterTeachers($Cid)
 {
-    $sql = "select firstname , lastname , tid  from teacher where Cid = '$cid' ";
+    $sql = "select firstname , lastname , tid  from teacher where Cid = '$Cid' ";
     $res = mysqli_query($this->conn,$sql);
     $teachers = [];
     while($row=mysqli_fetch_array($res)){
@@ -104,7 +104,7 @@ public function getCenterTeachers($cid)
 public function addSession($date, $time, $status, $price, $teacherId, $centerId, $studentId)
 {
     
-    $sql = "INSERT INTO sessions (date, time, status, sid, tid, cid, price) VALUES ('$date', '$time', '$status', NULL , '$teacherId', '$centerId', '$price')";
+    $sql = "INSERT INTO sessions (date, time, status, sid, tid, Cid, price) VALUES ('$date', '$time', '$status', NULL , '$teacherId', '$centerId', '$price')";
     $res = mysqli_query($this->conn, $sql);
 
     if ($res) {
@@ -321,6 +321,8 @@ public function getSubjectSessions($subject){
        }
    
    }
+
+   
 
 
 

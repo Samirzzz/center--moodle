@@ -74,8 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
     < <label for="pid">patient id</label>
     <input type="text" placeholder="Enter patient id" id="pid" name="patientid" value=""> -->
     <br>
-    <!-- <label for="cid">clinic id</label>
-    <input type="text" placeholder="Enter clinic id " id="cid" name="clinicid" value="">
+    <!-- <label for="Cid">clinic id</label>
+    <input type="text" placeholder="Enter clinic id " id="Cid" name="clinicid" value="">
     <br> --> 
     <input type="hidden" name="session_id" value="<?php echo $sessionId; ?>">
     <input type="submit" id="submit" name="submit"  >

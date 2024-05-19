@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             $_SESSION["subject"] = $UserObject->subject;
             $_SESSION["number"] = $UserObject->number;
             $_SESSION["educ"] = $UserObject->educ;
-            $_SESSION["Cid"] = $UserObject->cid;
+            $_SESSION["Cid"] = $UserObject->Cid;
 
             header("Location: adminmain.php");
             exit();

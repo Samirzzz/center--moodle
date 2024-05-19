@@ -7,7 +7,7 @@ class Teacher extends user{
 	public $subject;
 	public $educ;
 	public $number;
-	public $cid;
+	public $Cid;
 	public $uid;
 	public $db;
 	public $conn;
@@ -34,7 +34,7 @@ class Teacher extends user{
 	             	$this->subject=$row["subject"];
 	             	$this->educ=$row["educ"];
 	             	$this->number=$row["number"];
-	             	$this->cid=$row["Cid"];
+	             	$this->Cid=$row["Cid"];
 	 				$this->uid=$row["uid"];
 	
 	}

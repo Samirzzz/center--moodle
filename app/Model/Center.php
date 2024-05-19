@@ -2,7 +2,7 @@
 require_once '../app/Model/User.php';
 include_once '..\includes\db.php';
 class Center extends User{
-	public $cid;
+	public $Cid;
 	public $cname;
 	public $cloc;
 	public $cnumber;
@@ -14,7 +14,7 @@ class Center extends User{
 	$this->db = Database::getInstance();
 	$this->conn = $this->db->getConnection();	
 if($id!=""){
-	$sql = "SELECT user_acc.uid, user_acc.email,user_acc.usertype_id, center.cname, center.uid,center.cid,
+	$sql = "SELECT user_acc.uid, user_acc.email,user_acc.usertype_id, center.cname, center.uid,center.Cid,
 	center.cnumber,center.cloc
 	FROM center 
 	JOIN user_acc ON user_acc.uid = center.uid where user_acc.uid=".$id;
@@ -22,7 +22,7 @@ if($id!=""){
 if($row=mysqli_fetch_array($result)){
 	parent::__construct($row["uid"]);
 
-                $this->cid=$row["cid"];
+                $this->Cid=$row["Cid"];
 				$this->cname=$row["cname"];
 			
 				$this->cnumber=$row['cnumber'];

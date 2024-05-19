@@ -15,7 +15,7 @@ class TeacherController
     {
     
     
-        $sql = "INSERT INTO teacher (firstname, lastname, number,educ,subject,uid,cid) VALUES ('$firstname', '$lastname', '$number','$educ','$subject','$uid','0')";
+        $sql = "INSERT INTO teacher (firstname, lastname, number,educ,subject,uid,Cid) VALUES ('$firstname', '$lastname', '$number','$educ','$subject','$uid','0')";
         if(mysqli_query($conn,$sql))
                 return true;
             else

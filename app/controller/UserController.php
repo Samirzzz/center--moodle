@@ -85,7 +85,7 @@ class UserController {
    
                if ($centerRow = mysqli_fetch_array($centerInfoResult)) {
                    $center = new Center($row['uid']);
-                   $center->cid = $centerRow['cid'];
+                   $center->Cid = $centerRow['Cid'];
                    $center->cname = $centerRow['cname'];
                    $center->cloc = $centerRow['cloc'];
                    $center->cnumber = $centerRow['cnumber'];
