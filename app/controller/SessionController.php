@@ -230,7 +230,61 @@ public function deleteSession($sessionId){
         return false;
     }
 }
+public function bookingOptions(){
+    $sql = "SELECT subject FROM teacher";
+    $res = mysqli_query($this->conn, $sql);
+    $sub = [];
 
+    while ($row = $res->fetch_assoc()) {
+        $sub[] = $row['subject'];
+    }
+
+    // Remove duplicates
+    $sub = array_unique($sub);
+
+    $sub = array_map(function ($subject) {
+        return ['subject' => $subject];
+    }, $sub);
+
+    return $sub;
+}
+
+
+public function getSubjectSessions($subject){
+
+    $sql = "SELECT
+        a.sessid, a.date, a.time, a.price, a.tid, a.Cid,
+        d.firstname, d.lastname, d.subject,
+        c.cname
+    FROM
+        sessions a
+    JOIN
+        teacher d ON a.tid = d.tid
+    JOIN
+        center c ON a.Cid = c.Cid
+    WHERE
+        d.subject = '$subject' and a.status = 'available' ";
+
+
+    $result = mysqli_query($this->conn,$sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row['date'] . "</td>";   
+            echo "<td>" . $row['firstname'] . " " . $row['lastname'] . "</td>"; 
+            echo "<td>" . $row['subject'] . "</td>"; 
+            echo "<td>" . $row['time'] . "</td>";      
+            echo "<td>" . $row['price'] . "</td>";     
+            echo "<td>" . $row['cname'] . "</td>";
+            echo "<td><a href='./enrollNow.php?sessid=" . $row['sessid'] . "'>Book Now </a></td>";
+            echo "</tr>";
+        }
+    } else 
+    {
+        echo  "<div class='no-sessions-found'><h1>NO sessions FOUND!</h1></div>";
+        
+    }
 
 
 
