@@ -323,6 +323,121 @@ public function getSubjectSessions($subject){
    }
 
    
+   public function getEnrolled($sessionId)
+   {
+    
+       $sessionId = mysqli_real_escape_string($this->conn, $sessionId);
+       
+       $sql = "SELECT student.firstname, student.number,student.lastname
+               FROM student
+               JOIN enrollment ON student.sid = enrollment.sid
+               WHERE enrollment.sessid = '$sessionId'";
+               
+       $result = mysqli_query($this->conn, $sql);
+   
+       if ($result) {
+           if (mysqli_num_rows($result) > 0) {
+               while ($row = mysqli_fetch_assoc($result)) {
+                   echo "<tr>";
+                   echo "<td>" . $row['firstname'] . "</td>";
+                   echo "<td>" . $row['lastname'] . "</td>";
+                   echo "<td>" . $row['number'] . "</td>";
+                   echo "<td><a href='./DeleteEnrollment.php?sessid=" . $sessionId . "'>delete</a></td>";
+                   echo "</tr>";
+               }
+           } else
+            {
+               echo "<h1>No students found</h1>";
+           }
+       } else {
+           // Handle query error
+           echo "Error: " . mysqli_error($this->conn);
+       }
+   }
+   
+   public function cancelEnrollment($enrollment_id) {
+    $delete_sql = "DELETE FROM enrollment WHERE id = $enrollment_id";
+    $delete_result = mysqli_query($this->conn, $delete_sql);
+
+    if (!$delete_result) {
+        echo "Error: " . mysqli_error($this->conn);
+        return;
+    } else {
+        echo "Enrollment canceled successfully.";
+    }
+}
+
+public function getTeacherSessions($teacherID){ 
+    $sql = "SELECT * FROM sessions where tid =".$teacherID;
+   $result = mysqli_query($this->conn,$sql);
+   
+   if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row['sessid'] . "</td>";
+
+        echo "<td>" . $row['date'] . "</td>";
+        echo "<td>" . $row['time'] . "</td>";
+        echo "<td>" . $row['status'] . "</td>";
+        echo "<td><a href='./deleteSessions.php?sessid=" . $row['sessid'] . "'>Cancel</a></td>";
+        $sql2 = "Select cname from center WHERE Cid = '{$row['Cid']}'";
+        $res2=mysqli_query($this->conn,$sql2);
+        if ($res2->num_rows>0){
+            $crow = $res2->fetch_assoc();
+            echo "<td>" . $crow['cname'] . "</td>";
+        }
+       
+    
+    
+        echo "</tr>";
+    }
+} else {
+    echo "<h1>" ."No sessions found"."</h1" ;
+}
+$sql2 = "SELECT firstname, lastname FROM teacher WHERE tid = {$teacherID}";
+$res2 = mysqli_query($this->conn, $sql2);
+
+if ($res2->num_rows > 0) {
+    $row = $res2->fetch_assoc();
+    $name=$row['firstname'] . ' ' . $row['lastname'];
+    $_SESSION['sessionView'] = $name;
+}
+
+}
+
+
+public function retreiveteacher()
+{
+    $sql = "SELECT * FROM teacher where cid =0";
+    $result = mysqli_query($this->conn,$sql);
+    
+    if ($result->num_rows > 0) {
+     while ($row = $result->fetch_assoc())
+      {
+         echo "<tr>";
+         echo "<td>" . $row['tid'] . "</td>";
+         echo "<td>" . $row['firstname'] . " ".$row['lastname']. "</td>";
+         echo "<td>" . $row['subject'] . "</td>";
+         echo "<td><a href='./assigndoctor.php?tid=" . $row['tid'] . "'>Assign</a></td>";
+         echo "</tr>";
+     }
+ } else 
+ {
+     echo "<h1>" ."No Teachers found"."</h1" ;
+ }
+}
+public function assignTeacher($cid,$did){
+    $sql = "UPDATE teacher SET cid = '$cid' WHERE tid ='$did'";
+    $res = mysqli_query($this->conn, $sql);
+    if ($res) {
+        
+        return true;
+    } 
+    else 
+    {
+        return false;
+    }
+}
 
 
 

@@ -1,5 +1,5 @@
 <?php
-include_once '..\includes\navigation.php';
+include_once '..\includes\navbar.php';
 require_once '../app\controller\SessionController.php';
 $sessioncntrl =new SessionController();
 $sub =$sessioncntrl->bookingOptions();
