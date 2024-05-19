@@ -29,7 +29,7 @@ require_once '../app/controller/CenterController.php';
                 }
             }
         } elseif ($UserType == 'teacher') {
-            $deleteteacher=DrController::deleteTeacher($userID,$conn);
+            $deleteteacher=TeacherController::deleteTeacher($userID,$conn);
             if($deleteteacher)
             {
                 $deleteuser=UserController::deleteUser($userID,$conn);

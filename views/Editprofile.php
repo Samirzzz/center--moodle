@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $_SESSION['gender']=$gender;
                 $_SESSION['number']=$number;
 
-                header("Location:../views/pindex.php");
+                // header("Location:../views/pindex.php");
 
 
             }

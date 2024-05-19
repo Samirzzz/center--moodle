@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             $_SESSION["sid"] = $UserObject->id;
             $_SESSION["firstname"] = $UserObject->firstname;
             $_SESSION["lastname"] = $UserObject->lastname;
-            $_SESSION["age"] = $UserObject->age;
+            $_SESSION["AGE"] = $UserObject->age;
             $_SESSION["address"] = $UserObject->address;
             $_SESSION["gender"] = $UserObject->gender;
             $_SESSION["number"] = $UserObject->number;
