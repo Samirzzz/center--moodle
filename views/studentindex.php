@@ -29,6 +29,10 @@ $sessioncntrl =new SessionController();
         margin: 0;
         padding: 0;
     }
+    body {
+        /* background-image: url('../public/images/back2.jpg'); */
+
+    }
 
     .main--container {
         font-family: 'Times New Roman', serif;
@@ -194,7 +198,6 @@ $sessioncntrl =new SessionController();
 
     <div class="main--container">
         <div class="section--title">
-            <h3 class="title">HOME</h3>
 
         </div>
 

@@ -10,9 +10,10 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
         <style>
-      body {
-        /* background-image: url('../public/images/test.jpg'); */
-      }
+       body {
+        background-image: url('../public/images/background.jpg');
+
+    }
       #login-error{
         text-align:left;
         left:10;  
