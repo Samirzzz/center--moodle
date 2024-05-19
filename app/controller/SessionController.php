@@ -285,9 +285,42 @@ public function getSubjectSessions($subject){
         echo  "<div class='no-sessions-found'><h1>NO sessions FOUND!</h1></div>";
         
     }
+}
+    public function getStudentID($id)
+    {
+       
+       $sql = "SELECT user_acc.uid, user_acc.email,user_acc.usertype_id, student.sid, student.uid
+       FROM student 
+       JOIN user_acc ON user_acc.uid = student.uid where user_acc.uid=".$id;
+       $result = mysqli_query($this->conn,$sql);
+       if($row=mysqli_fetch_array($result)){
+           
+       
+                       $PID=$row["sid"];
+   
+       }
+       return $PID;
+   
+   } 
 
-
-
+   public function bookForStudent($sid, $sessid)
+   {
+        // Check if the student is already booked for the session
+        $check_sql = "SELECT * FROM enrollment WHERE sid = '$sid' AND sessid = '$sessid'";
+        $check_result = mysqli_query($this->conn, $check_sql);
+        if (mysqli_num_rows($check_result) > 0) {
+            echo "Error: you already have booked this session before";
+            return;
+        }
+      $enrollment_sql = "INSERT INTO enrollment (sid, sessid) VALUES ('$sid', '$sessid')";
+       $enrollment_result = mysqli_query($this->conn, $enrollment_sql);
+       if (!$enrollment_result) {
+           echo "Error: " . mysqli_error($this->conn);
+           return;
+   
+       }
+   
+   }
 
 
 
