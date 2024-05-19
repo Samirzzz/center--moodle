@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
     <style>
     body {
-        /* background-image: url('../public/images/test.jpg'); */
+        background-image: url('../public/images/background.jpg');
 
     }
 
@@ -59,9 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
     $userType = $_POST['userType'];
-    $cname=$_POST['cname'];
-    $cloc=$_POST['cloc'];
-    $cnumber=$_POST['cnumber'];
+    $cname=$_POST['centername'];
+    $cloc=$_POST['centerloc'];
+    $cnumber=$_POST['centernumber'];
 
 
     if ($userType == 'student') 
@@ -86,8 +86,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         } 
     }
     }
-    if ($userType == 'Center')
+    if ($userType == 'center')
     {
+
         $uid= UserController::signupUser($email, $password, 3,$conn); 
         if ($uid !== false) {
             if (CenterController::signupCenter($cname,$cloc,$cnumber,$uid,$conn ) ) {
@@ -120,17 +121,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                         <option value="center">Center</option>
                     </select>
                 </div>
-                
-                <div class="form-group" id="center-fields" style="display: block;">
-                    <label for="center-addresss">center Address:</label>
-                    <input type="text" class="form-control" id="center-addresss" placeholder="center-addresss" name="cloc">
-                    <br>
+                <div class="form-group" id="center-fields" style="display: none;">
                     <label for="center-name">Name:</label>
-                    <input type="text" class="form-control" id="center-Name" placeholder="center-name" name="cname">
+                    <input type="text" class="form-control" id="cname" placeholder="center-name" name="centername">
+                    <br>
+                    <label for="center-addresss">center Address:</label>
+                    <input type="text" class="form-control" id="cloc" placeholder="center-addresss" name="centerloc">
                     <br>
                     <label for="center-number">Number:</label>
-                    <input type="text" class="form-control" id="center-Number" placeholder="center-Number" name="cnumber">
+                    <input type="text" class="form-control" id="cnumber" placeholder="center-Number" name="centernumber">
                 </div>
+                <div class="form-group" id="common-fields">
+                <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" required>
+                            <div id="email-error" class="error-message text-danger"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                            <div id="password-error" class="error-message text-danger"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cpassword">Confirm Password:</label>
+                            <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" name="cpassword" required>
+                            <div id="cpassword-error" class="error-message text-danger"></div>
+                        </div>
+                    </div>
+              
                 <div id="fields" style="display:block;">
                     <div class="form-group">
                         <label for="Fname">First Name:</label>
@@ -144,12 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                             required>
                         <div id="lname-error" class="error-message text-danger"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" placeholder="Email Address" name="email"
-                            required>
-                        <div id="email-error" class="error-message text-danger"></div>
-                    </div>
+
                     <div class="form-group">
                         <label for="age">Age:</label>
                         <input type="number" class="form-control" id="age" name="age" required>
@@ -182,24 +195,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                             required>
                         <div id="phone-error" class="error-message text-danger"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" name="password"
-                            required>
-                        <div id="password-error" class="error-message text-danger"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="cpassword">Confirm password:</label>
-                        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password"
-                            name="cpassword" required>
-                        <div id="cpassword-error" class="error-message text-danger"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Image">Upload Image:</label>
-                        <input type="file" class="form-control" id="Uimage" placeholder="Upload Image"
-                            name="Uimage" required>
-                        <div id="Uimage-error" class="error-message text-danger"></div>
-                    </div>
+
+            
 
                    </div>
 
