@@ -1,44 +1,49 @@
-function toggleteacherFields() 
-{
-  var teacherFields = document.getElementById("teacher-fields");
-  var userTypeSelect = document.getElementById("userType");
-  var allfields=document.getElementById("fields");
-var centerfields = document.getElementById("center-fields");
-  if (userTypeSelect.value === "teacher") 
-  {
-      teacherFields.style.display = "block";
-      centerfields.style.display = "none";
-      allfields.style.display="block";
-  } 
-  else if(userTypeSelect.value === "center")
-   {
-    allfields.style.display = "none";
-    teacherFields.style.display = "none";
-    centerfields.style.display = "block";
-  }
-  else
-  {
-    allfields.style.display="block";
-    centerfields.style.display = "none";
-    teacherFields.style.display = "none";
-  }
-}
+    function toggleteacherFields() {
+        var userType = document.getElementById("userType").value;
+        var teacherFields = document.getElementById("teacher-fields");
+        var centerFields = document.getElementById("center-fields");
+        var commonFields = document.getElementById("common-fields");
+        var Fields = document.getElementById("fields");
+
+
+
+        commonFields.style.display = "block";
+        teacherFields.style.display = "none";
+        centerFields.style.display = "none";
+
+
+        if (userType === "teacher") {
+            teacherFields.style.display = "block";
+            centerFields.style.display = "none";
+
+        } else if (userType === "center") {
+            centerFields.style.display = "block";
+            teacherFields.style.display = "none";
+            disableFields(true, Fields);
+            disableFields(false, centerFields);
+            disableFields(true, teacherFields);
+        } else {
+            teacherFields.style.display = "none";
+            centerFields.style.display = "none";
+        }
+    }
+    function disableFields(disable, container) {
+        container.querySelectorAll("input, select").forEach(function (input) {
+            input.disabled = disable;
+            if (disable) {
+                element.removeAttribute("required");
+            } else {
+                element.setAttribute("required", "required");
+            }
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        toggleteacherFields();
+        document.getElementById("userType").addEventListener("change", toggleteacherFields);
+    });
+
   
 
-// function togglecenterFileds()
-//  {
-  
-//     var userTypeSelect = document.getElementById("userType");
-  
-//     if 
-//      {
-//         centerfields.style.display = "block";
-//      } 
-//     else 
-//     {
-       
-//     }
-//   }
 
 function validateForm() {
   // Reset error messages
