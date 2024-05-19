@@ -17,8 +17,7 @@ $Sessioncntrl =new SessionController();
    
         <tr>
             <th>Teacher ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th> Name</th>
             <th>Subject</th>
             <th>Actions</th>
            

@@ -405,7 +405,6 @@ if ($res2->num_rows > 0) {
 
 }
 
-
 public function retreiveteacher()
 {
     $sql = "SELECT * FROM teacher where cid =0";
@@ -418,7 +417,7 @@ public function retreiveteacher()
          echo "<td>" . $row['tid'] . "</td>";
          echo "<td>" . $row['firstname'] . " ".$row['lastname']. "</td>";
          echo "<td>" . $row['subject'] . "</td>";
-         echo "<td><a href='./assigndoctor.php?tid=" . $row['tid'] . "'>Assign</a></td>";
+         echo "<td><a href='./AssignTeacher.php?tid=" . $row['tid'] . "'>Assign</a></td>";
          echo "</tr>";
      }
  } else 
@@ -426,10 +425,12 @@ public function retreiveteacher()
      echo "<h1>" ."No Teachers found"."</h1" ;
  }
 }
-public function assignTeacher($cid,$did){
+public function assignTeacher($cid,$did) 
+{
     $sql = "UPDATE teacher SET cid = '$cid' WHERE tid ='$did'";
     $res = mysqli_query($this->conn, $sql);
-    if ($res) {
+    if ($res) 
+    {
         
         return true;
     } 
