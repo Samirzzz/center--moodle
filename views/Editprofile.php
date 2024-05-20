@@ -84,9 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
         }
         elseif ($UserType == 'center') {
-            // $cloc = htmlspecialchars($_POST['clinicLocation']);
-            // $cname = htmlspecialchars($_POST['clinicName']);
-            // $cnumber = htmlspecialchars($_POST['clinicNumber']);
+ 
             $editcenter=CenterController::editCenter($cname,$cloc,$cnumber,$userID,$conn);
             if($editcenter)
             {
