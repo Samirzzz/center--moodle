@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Title>Account Settings</Title>
     <style>
     body {
         background-color: white;
@@ -109,7 +110,7 @@
                 <div class="dashboard-items setting-tabs">
                     <div>
                         <div class="h1-dashboard">Account Settings &nbsp;</div><br>
-                        <div class="h3-dashboard" style="font-size: 15px;">Edit your Account Details & Change Password
+                        <div class="h3-dashboard" style="font-size: 15px;">Edit your Account Details 
                         </div>
                     </div>
                 </div>

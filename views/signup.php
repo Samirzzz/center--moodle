@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">Registration</h2>
-                <form action="" enctype="multipart/form-data" method="post">
+                <form action="" enctype="multipart/form-data" method="post" onsubmit="return validateForm()">
                 <div class="form-group">
                     <label for="userType">User Type:</label>
                     <select class="form-control" id="userType" name="userType" onchange="toggleteacherFields()">

@@ -68,7 +68,6 @@ $conn = $db->getConnection();
             echo "<p>Name: <br>" . $_SESSION["firstname"] . " " . $_SESSION["lastname"] . "</p>";
             echo "<p>Email: <br>" . $_SESSION["email"] . "</p>";
             echo "<p>Phone: <br>" . $_SESSION["number"] . "</p>";
-            echo "<p>Age: <br>" . $_SESSION["age"] . "</p>";
             echo "<p>Gender: <br> " . $_SESSION["gender"] . "</p>";
             echo "<p>Address: <br> " . $_SESSION["address"] . "</p>";
         } elseif ($_SESSION["type"] === 'teacher') {
