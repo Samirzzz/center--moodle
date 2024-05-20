@@ -375,7 +375,6 @@ public function getTeacherSessions($teacherID){
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row['sessid'] . "</td>";
-
         echo "<td>" . $row['date'] . "</td>";
         echo "<td>" . $row['time'] . "</td>";
         echo "<td>" . $row['status'] . "</td>";

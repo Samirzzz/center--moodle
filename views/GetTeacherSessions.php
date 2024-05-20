@@ -11,34 +11,38 @@ $Sessioncntrl =new SessionController();
  
 </head>
 <body>
-   <h1 id="h1h1">Showing sessions for: </h1>
+
+<?php
+if(isset($_GET['tid']))
+{
+$teacherid=$_GET['tid'];
+}
+?>
+   <h1 id="h1h1">Showing sessions for Teacher: </h1>
 
     <table >
    
         <tr>
-            <th>SESSION ID</th>
-            <th>Date</th>
+            <th>Session ID</th>
+            <th> Date</th>
             <th>Time</th>
             <th>Status</th>
-            <th>Actions</th>
-            <th>Center</th>
-           
+            <th>Action</th>
+            <th>Center Name</th>
+           <th>Name</th>
+
         </tr>
      
       <?php 
 
-if ($_SESSION["type"] == 'center') {
-   $center_id = $Sessioncntrl->getCenterID($_SESSION["ID"]);
-   $Sessioncntrl->viewSessions($center_id);
- }
-else if ($_SESSION["type"] == 'Teacher') {
-    $center_id = $Sessioncntrl->getTeacherID($_SESSION["ID"]);
-    $Sessioncntrl->getTeacherSessions($center_id); 
-}
+
+   $Sessioncntrl->getTeacherSessions($teacherid);
+
 
 ?>
+</table>
+    
 
-    </table>
 
     <style>
         /* body {
@@ -82,5 +86,4 @@ else if ($_SESSION["type"] == 'Teacher') {
     </style>
 
 </body>
-
 </html>
