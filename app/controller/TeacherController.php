@@ -49,5 +49,21 @@ public static function deleteTeacher($id,$conn)
         return false;
     }
 }
+static function teachersearch($value,$conn)  {
+
+    $i=0;
+        $teacher=array();
+        $sql = "SELECT user_acc.uid, user_acc.email, teacher.firstname, teacher.lastname ,teacher.tid
+                            FROM teacher 
+                            JOIN user_acc ON user_acc.uid = teacher.uid  
+                            WHERE email LIKE '%$value%'";
+        $result = mysqli_query($conn,$sql);
+
+        while($row=mysqli_fetch_array($result)) {
+            $teacher[$i++]=new Teacher($row[0]);
+        }	
+        return $teacher;
+
+    }
 }
 ?>

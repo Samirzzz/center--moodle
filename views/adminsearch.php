@@ -64,3 +64,27 @@ $db = Database::getInstance();
         </div>
     </div>
 </div>
+<script>
+        $(document).ready(function() {
+            $("#search").on("input", function() {
+                var query = $(this).val();
+                var type=$("select[name='type']").val();
+                if (query !== "") {
+                    $.ajax({
+                        url: "livesearch.php",
+                        method: "POST",
+                        data: { query: query, type: type },
+                        success: function(data) {
+                            $("#search-results").html(data);
+                        }
+                    });
+                } else {
+                    $("#search-results").empty();
+                }
+            });
+        });
+    </script>
+
+
+</body>
+</html>
