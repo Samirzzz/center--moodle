@@ -7,7 +7,7 @@ $sessioncntrl =new SessionController();
 
 $errors = array();
 $center_id = $sessioncntrl->getCenterID($_SESSION["ID"]);
-echo( "center id is ---------- ".$center_id);
+// echo( "center id is ---------- ".$center_id);
 $teachers = $sessioncntrl->getCenterTeachers($center_id);
 
 
