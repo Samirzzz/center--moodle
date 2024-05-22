@@ -19,6 +19,7 @@
         } else if (userType === "center") {
             centerFields.style.display = "block";
             teacherFields.style.display = "none";
+            studentfields.style.display="none";
             disableFields(true, Fields);
             disableFields(false, centerFields);
             disableFields(true, teacherFields);
