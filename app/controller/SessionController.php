@@ -378,7 +378,7 @@ public function getTeacherSessions($teacherID){
         echo "<td>" . $row['date'] . "</td>";
         echo "<td>" . $row['time'] . "</td>";
         echo "<td>" . $row['status'] . "</td>";
-        echo "<td><a href='./deleteSessions.php?sessid=" . $row['sessid'] . "'>Cancel</a></td>";
+        echo "<td><a href='./deleteSession.php?sessid=" . $row['sessid'] . "'>Cancel</a></td>";
         $sql2 = "Select cname from center WHERE Cid = '{$row['Cid']}'";
         $res2=mysqli_query($this->conn,$sql2);
         if ($res2->num_rows>0){
