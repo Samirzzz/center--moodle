@@ -448,6 +448,42 @@ public function assignTeacher($cid,$did)
 }
 
 
+public function viewStudentSessions($sid) {
+    $sql = "SELECT
+                s.sessid, s.date, s.time, s.price, s.tid, s.Cid,
+                t.firstname AS teacher_firstname, t.lastname AS teacher_lastname,
+                c.cname,
+                e.id AS enrollment_id
+            FROM
+                sessions s
+            JOIN
+                teacher t ON s.tid = t.tid
+            JOIN
+                center c ON s.Cid = c.Cid
+            JOIN
+                enrollment e ON s.sessid = e.sessid
+            WHERE
+                e.sid = $sid";
+
+    $result = mysqli_query($this->conn, $sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row['date'] . "</td>";
+            echo "<td>" . $row['time'] . "</td>";
+            echo "<td>" . $row['teacher_firstname'] . " " . $row['teacher_lastname'] . "</td>";
+            echo "<td>" . $row['cname'] . "</td>";
+            echo "<td>" . $row['price'] . "</td>";
+            echo "<td><a href='./cancelEnrollment.php?enrollment_id=" . $row['enrollment_id'] . "'>Cancel</a> </td>";
+            echo "</tr>";
+        }
+    } else {
+        echo "<h1>No sessions found</h1>";
+    }
+}
+
+
 
 }
 ?>

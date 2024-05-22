@@ -16,7 +16,7 @@ require_once '../app\controller\SessionController.php';
         $db = Database::getInstance();
         $conn = $db->getConnection();
 $sessioncntrl =new SessionController();
-// $studentId = $sessioncntrl->getStudentID( $_SESSION["sid"]);
+$studentId = $sessioncntrl->getStudentID( $_SESSION["sid"]);
 // echo "student id : ".$studentId;
 // echo "session id : ".$appID;
 
@@ -246,7 +246,10 @@ $sessioncntrl =new SessionController();
 
      
   </tr>
- <!-- <?php $sessioncntrl->viewStudentsessions($studentId);?> -->
+  <?php
+  
+
+  $sessioncntrl->viewStudentsessions($studentId);?> 
                 </thead>
                 <tbody>
 
