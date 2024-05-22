@@ -174,7 +174,7 @@ if (isset($_POST["query"])) {
                                        
                                        echo '<button type="submit" name="deletee" class="btn btn-sm btn-outline-primary w-100"><a href=".\deletestudent.php?uid=' .$student->uid . '">Delete</a></button>';
                                        echo  '</form>';
-                                       echo '<button class="btn btn-sm btn-primary w-100 ml-2" id="close'.$student->sid.'">Close</button>';
+                                       echo '<button class="btn btn-sm btn-primary w-100 ml-2" id="close'.$student->uid.'">Close</button>';
                        
                                        echo '</div>';
                                        echo '</div>';
