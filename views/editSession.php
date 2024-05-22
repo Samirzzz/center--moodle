@@ -20,13 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
     $s_date = htmlspecialchars($_POST['date']);
     $s_time = htmlspecialchars($_POST['time']);
     $s_price = htmlspecialchars($_POST['price']);
+    $s_status = htmlspecialchars($_POST['status']);
     
-    $errors = $sessioncntrl->validateSessionUpdate($s_date, $s_time, $s_price);
+    $errors = $sessioncntrl->validateSessionUpdate($s_date, $s_time, $s_price,$s_status);
 
 
     if (count($errors) === 0) 
     {
-  if ($sessioncntrl->updateSession($sessionId,$s_date, $s_time, $s_price)) {
+  if ($sessioncntrl->updateSession($sessionId,$s_date, $s_time, $s_price,$s_status)) {
             echo "Form submitted successfully!";
             // header("location:../views/viewSessions.php");
         } else {
@@ -62,9 +63,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
     <label for="t">Time</label>
     <input type="text" placeholder="Enter the time" id="t" name="time" value="<?php echo $session['time']; ?>">
     <br>
-    <!-- <label for="s">Status</label>
-    <input type="text" placeholder="Enter status" id="s" name="status" value=""> -->
+    <label for="s">Status</label>
+<select id="s" name="status">
+    <option value="available">Available</option>
+    <option value="reserved">reserved</option>
+</select>
     <br>
+
+
+
+
+
+
     <label for="p">price</label>
     <input type="text" placeholder="Enter price" id="p" name="price" value="<?php echo $session['price']; ?>">
     <br>
