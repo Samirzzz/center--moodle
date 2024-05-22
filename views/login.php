@@ -23,27 +23,37 @@
         function validateForm() {
             document.getElementById("user-err").innerHTML = "";
             document.getElementById("pass-err").innerHTML = "";
-            document.getElementById("login-error").innerHTML = ""; 
+            document.getElementById("login-error").innerHTML = "";
+
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
-
-            
-            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            if (!emailPattern.test(email)) {
-                document.getElementById("user-err").innerHTML = "Invalid email address.";
-                return false;
-            }
+            var isValid = true;
 
             if (email === "") {
-            document.getElementById("user-err").innerHTML = " Email is required.";
-            isValid = false;
-        }
-        if (password === "") {
-            document.getElementById("pass-err").innerHTML = " Password is required.";
-            isValid = false;
-        }
+                document.getElementById("user-err").innerHTML = "Email is required.";
+                isValid = false;
+            } else {
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (!emailPattern.test(email)) {
+                    document.getElementById("user-err").innerHTML = "Invalid email address.";
+                    isValid = false;
+                }
+            }
 
-            return true; 
+            if (password === "") {
+                document.getElementById("pass-err").innerHTML = "Password is required.";
+                isValid = false;
+            }
+            if (password === "") {
+                document.getElementById("pass-err").innerHTML = "Password is required.";
+                isValid = false;
+            } else if (password.length < 8) {
+                document.getElementById("pass-err").innerHTML = "Password must be at least 8 characters long.";
+                isValid = false;
+            }
+
+
+            return isValid;
         }
     </script>
 </head>
@@ -114,36 +124,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
 <body>
     <div id="cont">
-            <div id="frm">
-                <h1 id="wel">WELCOME</h1>
-              
-                <form action="" method="post" id="interface-form" name="form" onsubmit="return validateForm()">
-                    <div id="fields">
-                        <i class="fa fa-solid fa-user iicon"></i>
-                        
-                        
-                        <input class="login-field" type="text" name="email" placeholder="Email" id="email" required>
-                        <div id="user-err"></div>
-                        <br>
-                        <i class="fa-solid fa-lock icon"></i>
-                        <input class="login-field" type="password" name="password" placeholder="Password" id="password" required>
-                        <div id="pass-err"> </div>
-                        <br>
-                        <div id="login-error" style="color: red;"><?php if (isset($loginError)) echo $loginError; ?></div>
-                        <input type="submit" name="submit" id="sb" class="login-field">
-                    </div>
-                    <div id="sgu">
-                       
-                      <p> Not a member yet ? </p>  <a class="link" href="signup.php">Sign Up</a> 
-                        
-                        
-                    </div>
-                    
-                </form>
-            </div>
-            
+        <div id="frm">
+            <h1 id="wel">WELCOME</h1>
+            <form action="" method="post" id="interface-form" name="form" onsubmit="return validateForm()">
+                <div id="fields">
+                    <i class="fa fa-solid fa-user iicon"></i>
+                    <input class="login-field" type="text" name="email" placeholder="Email" id="email">
+                    <div id="user-err"></div>
+                    <br>
+                    <i class="fa-solid fa-lock icon"></i>
+                    <input class="login-field" type="password" name="password" placeholder="Password" id="password">
+                    <div id="pass-err"></div>
+                    <br>
+                    <div id="login-error"><?php if (isset($loginError)) echo $loginError; ?></div>
+                    <input type="submit" name="submit" id="sb" class="login-field">
+                </div>
+                <div id="sgu">
+                    <p>Not a member yet?</p> <a class="link" href="signup.php">Sign Up</a>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
+
 
 
 </html>
