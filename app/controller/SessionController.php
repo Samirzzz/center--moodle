@@ -87,7 +87,11 @@ public function getCenterName()
 {
     return $_SESSION["cname"];
 }
-
+public function getTeacherName()
+{
+    
+    return $_SESSION["firstname"] ;
+}
 public function getCenterTeachers($Cid)
 {
     $sql = "select firstname , lastname , tid  from teacher where Cid = '$Cid' ";
@@ -178,7 +182,7 @@ public function DeleteEnrollment($sessionId)
     }
 }
 
-public function validateSessionUpdate($date, $time, $price)
+public function validateSessionUpdate($date, $time, $price , $status)
 {
     $errors = array();
 
@@ -195,6 +199,9 @@ public function validateSessionUpdate($date, $time, $price)
         $errors[] = "Price is required";
     }
 
+    
+
+
     $currentDate = date("Y-m-d");
     $maxAllowedDate = date("Y-m-d", strtotime("+45 days")); // 1.5 months ahead
 
@@ -204,8 +211,8 @@ public function validateSessionUpdate($date, $time, $price)
 
     return $errors;
 }
-public function updateSession($sessionId,$s_date, $s_time, $s_price){
-    $sql = "UPDATE sessions SET date = '$s_date', time = '$s_time',  price ='$s_price' WHERE sessid = $sessionId";
+public function updateSession($sessionId,$s_date, $s_time, $s_price,$s_status){
+    $sql = "UPDATE sessions SET date = '$s_date', time = '$s_time',  price ='$s_price' , status = '$s_status'WHERE sessid = $sessionId";
     $res = mysqli_query($this->conn, $sql);
 
     if ($res) {
@@ -214,6 +221,7 @@ public function updateSession($sessionId,$s_date, $s_time, $s_price){
         $this->session->time=$s_time;
        
         $this->session->price=$s_price;
+        $this->session->status=$s_status;
         
         return true;
     } else {
@@ -378,7 +386,7 @@ public function getTeacherSessions($teacherID){
         echo "<td>" . $row['date'] . "</td>";
         echo "<td>" . $row['time'] . "</td>";
         echo "<td>" . $row['status'] . "</td>";
-        echo "<td><a href='./deleteSessions.php?sessid=" . $row['sessid'] . "'>Cancel</a></td>";
+        echo "<td><a href='./deleteSession.php?sessid=" . $row['sessid'] . "'>Cancel</a></td>";
         $sql2 = "Select cname from center WHERE Cid = '{$row['Cid']}'";
         $res2=mysqli_query($this->conn,$sql2);
         if ($res2->num_rows>0){

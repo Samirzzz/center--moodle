@@ -11,7 +11,12 @@ $Sessioncntrl =new SessionController();
  
 </head>
 <body>
-   <h1 id="h1h1">Showing sessions for: </h1>
+
+
+   
+   
+   
+</h1>
 
     <table >
    
@@ -31,7 +36,7 @@ if ($_SESSION["type"] == 'center') {
    $center_id = $Sessioncntrl->getCenterID($_SESSION["ID"]);
    $Sessioncntrl->viewSessions($center_id);
  }
-else if ($_SESSION["type"] == 'Teacher') {
+else if ($_SESSION["type"] == 'teacher') {
     $center_id = $Sessioncntrl->getTeacherID($_SESSION["ID"]);
     $Sessioncntrl->getTeacherSessions($center_id); 
 }
