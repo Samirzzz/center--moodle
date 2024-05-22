@@ -46,7 +46,21 @@ public static function deleteStudent($id,$conn)
 	}
 }
 
+static function studentsearch($value,$conn)  {
+	$i=0;
+	$student=array();
+	$sql="SELECT user_acc.uid, user_acc.email, student.firstname, student.lastname,student.sid   
+	FROM student
+	JOIN user_acc ON user_acc.uid = student.uid 
+	WHERE email LIKE '%$value%'";
+	$result = mysqli_query($conn,$sql);
 
+	while($row=mysqli_fetch_array($result)) {
+		$student[$i++]=new Student($row[0]);
+	}	
+	return $student;
+
+}
 }
 
 ?>

@@ -53,6 +53,21 @@ class CenterController
         }
     }
     
+    static function centersearch($value,$conn)  {
     
+        $i=0;
+            $center=array();
+            $sql = "SELECT user_acc.uid, user_acc.email, center.Cid,center.cname, center.cloc,center.cnumber
+                                FROM center 
+                                JOIN user_acc ON user_acc.uid = center.uid  
+                                WHERE email LIKE '%$value%'";
+            $result = mysqli_query($conn,$sql);
+    
+            while($row=mysqli_fetch_array($result)) {
+                $center[$i++]=new Center($row[0]);
+            }	
+            return $center;
+    
+        }
 }
 ?>
