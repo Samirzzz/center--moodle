@@ -4,6 +4,8 @@ require_once '../app/Model/Student.php';
 require_once '../app/Model/Teacher.php';
 require_once '../app/Model/Admin.php';
 require_once '../app/Model/Center.php';
+
+
 class UserController {
     private $db;
     private $conn;  
@@ -11,6 +13,11 @@ class UserController {
     public function __construct() {
         $this->db = Database::getInstance();
         $this->conn = $this->db->getConnection();
+    }
+
+    public function add($num,$num1)
+    {
+        return $num+$num1;
     }
     public static function login($email, $pass,$conn)
     {
