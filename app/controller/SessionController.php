@@ -333,10 +333,9 @@ public function getSubjectSessions($subject){
    
    public function getEnrolled($sessionId)
    {
-    
        $sessionId = mysqli_real_escape_string($this->conn, $sessionId);
        
-       $sql = "SELECT student.firstname, student.number,student.lastname
+       $sql = "SELECT student.firstname, student.number, student.lastname, enrollment.id AS enrollment_id
                FROM student
                JOIN enrollment ON student.sid = enrollment.sid
                WHERE enrollment.sessid = '$sessionId'";
@@ -347,14 +346,14 @@ public function getSubjectSessions($subject){
            if (mysqli_num_rows($result) > 0) {
                while ($row = mysqli_fetch_assoc($result)) {
                    echo "<tr>";
+                   echo "<td>" . $row['enrollment_id'] . "</td>"; 
                    echo "<td>" . $row['firstname'] . "</td>";
                    echo "<td>" . $row['lastname'] . "</td>";
                    echo "<td>" . $row['number'] . "</td>";
-                   echo "<td><a href='./DeleteEnrollment.php?sessid=" . $sessionId . "'>delete</a></td>";
+                   echo "<td><a href='./cancelEnrollment.php?enrollment_id=" . $row['enrollment_id'] . "'>delete</a></td>";
                    echo "</tr>";
                }
-           } else
-            {
+           } else {
                echo "<h1>No students found</h1>";
            }
        } else {
@@ -362,6 +361,7 @@ public function getSubjectSessions($subject){
            echo "Error: " . mysqli_error($this->conn);
        }
    }
+   
    
    public function cancelEnrollment($enrollment_id) {
     $delete_sql = "DELETE FROM enrollment WHERE id = $enrollment_id";

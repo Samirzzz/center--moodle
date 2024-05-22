@@ -19,6 +19,7 @@ if (isset($_GET['sessid']))
   <thead class="thead-dark">
     <tr>
     <tr>
+      <th>enrollment id</th>
        <th>First Name</th>
        <th>Last Name</th>
        <th>Number</th>
