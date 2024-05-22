@@ -27,10 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
       
         if ($sessioncntrl->addSession($s_date, $s_time, $s_status,$s_price, $s_tid, $s_cid, NULL)) {
             echo "Form submitted successfully!";
-            header("location: ./viewSessions.php");
+            // header("location: ./viewSessions.php");
             
             
-        } else {
+        } 
+        else {
             echo "Error: " . mysqli_error($conn);
         }
         
