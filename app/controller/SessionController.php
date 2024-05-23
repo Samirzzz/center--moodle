@@ -170,17 +170,6 @@ if ($res2) {
 }
 
 
-public function DeleteEnrollment($sessionId)
-{
-    $sql="DELETE FROM enrollment WHERE sessid=$sessionId";
-    $res=mysqli_query($this->conn,$sql);
-    if ($res) {
-        
-        return true;
-    } else {
-        return false;
-    }
-}
 
 public function validateSessionUpdate($date, $time, $price , $status)
 {
